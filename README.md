@@ -79,21 +79,19 @@ This project did not rerun the complete raw RNA-seq processing pipeline. The nor
 ## Project Structure
 
 ```text
-BUILD_LEO_Dopaminergic_Organoids/
+NASA-OSD871-Reproduction/
 │
 ├── README.md
 ├── run_all.R
 │
 ├── 01_RAW_DATA/
-│   └── GLDS-720_rna_seq_Normalized_Counts_GLbulkRNAseq.csv
+│   └── README.md
 │
 ├── 02_METADATA/
-│   ├── GLDS-720_rna_seq_SampleTable_GLbulkRNAseq.csv
-│   ├── GLDS-720_rna_seq_contrasts_GLbulkRNAseq.csv
-│   ├── s_OSD-871.txt
-│   └── a_OSD-871_transcription-profiling_rna-sequencing-(rna-seq)_Illumina.txt
+│   └── README.md
 │
 ├── 03_CODE/
+│   ├── README.md
 │   ├── 01_load_data.R
 │   ├── 02_prepare_metadata.R
 │   ├── 03_marker_reproduction.R
@@ -101,6 +99,7 @@ BUILD_LEO_Dopaminergic_Organoids/
 │   └── 05_make_figures.R
 │
 ├── 04_RESULTS/
+│   ├── README.md
 │   ├── Master_Sample_Audit_Table.csv
 │   ├── Statistical_Reproduction_Scorecard.csv
 │   ├── Statistical_Reproduction_Long_Format.csv
@@ -108,93 +107,29 @@ BUILD_LEO_Dopaminergic_Organoids/
 │   └── sessionInfo.txt
 │
 ├── 05_FIGURES/
+│   ├── README.md
 │   ├── Figure1_TH_Ground_vs_LEO.png
 │   ├── Figure2_DDC_Ground_vs_LEO.png
 │   ├── Figure3_Progenitor_CellCycle_Markers_Ground_vs_LEO.png
 │   ├── Figure4_Statistical_Reproduction_Heatmap.png
 │   └── Figure4_Statistical_Reproduction_Heatmap.pdf
 │
-└── 06_WRITEUP/
-    ├── technical_report.md
-    └── limitations.md
-## How to Reproduce the Analysis
+├── 06_WRITEUP/
+│   ├── README.md
+│   ├── technical_report.md
+│   ├── limitations.md
+│   └── executive_summary.md
+│
+└── 07_EXPERT_FEEDBACK/
+    ├── README.md
+    └── expert_outreach.md
+## Sources
 
-### 1. Requirements
+- NASA Open Science Data Repository — OSD-871  
+  https://osdr.nasa.gov/bio/repo/data/studies/OSD-871
 
-The analysis was developed in R and requires the `ggplot2` package.
+- Primary study: neural / dopaminergic organoids cultured in low-Earth orbit  
+  [Primary paper link / DOI]
 
-Install it if necessary:
-
-```r
-install.packages("ggplot2")
-## How to Reproduce the Analysis
-
-### Requirements
-
-This project was developed in R and uses the `ggplot2` package.
-
-If needed, install it with:
-
-`install.packages("ggplot2")`
-
-The exact R and package versions used are recorded in:
-
-`04_RESULTS/sessionInfo.txt`
-
-### Required NASA files
-
-The following NASA OSD-871 files are required to reproduce the analysis:
-
-- `GLDS-720_rna_seq_Normalized_Counts_GLbulkRNAseq.csv`
-- `GLDS-720_rna_seq_SampleTable_GLbulkRNAseq.csv`
-- `GLDS-720_rna_seq_contrasts_GLbulkRNAseq.csv`
-- `GLDS-720_rna_seq_differential_expression_GLbulkRNAseq.csv`
-- `s_OSD-871.txt`
-- `a_OSD-871_transcription-profiling_rna-sequencing-(rna-seq)_Illumina.txt`
-
-These files should be downloaded from NASA OSD-871 and placed in the corresponding project folders.
-
-Large NASA data files do not need to be uploaded directly to the GitHub repository.
-
-### Run the analysis
-
-Open the project folder:
-
-`BUILD_LEO_Dopaminergic_Organoids`
-
-Start a fresh R session and run:
-
-`source("run_all.R")`
-
-The pipeline will automatically:
-
-1. load and validate the expression data,
-2. prepare and align the metadata,
-3. reproduce the selected marker patterns,
-4. validate the NASA differential-expression results,
-5. generate the final figures.
-
-A successful run ends with:
-
-`BUILD PIPELINE COMPLETED SUCCESSFULLY`
-
-The pipeline was successfully tested from a fresh R session during development of this project.
-## Limitations and Scientific Integrity
-
-This project reproduces selected marker-level transcriptional patterns from NASA OSD-871. It does not independently reproduce the complete raw RNA-seq processing pipeline.
-
-Key limitations include:
-
-- The dataset contains only two donor-specific iPSC lines: one control line and one sporadic Parkinson’s disease line.
-- Disease status is therefore confounded with donor and cell line, so PD-versus-Control differences cannot be interpreted as generalizable disease effects.
-- The 23 samples represent organoid-level replication, not 23 independent human donors.
-- Normalized NASA expression data were used for descriptive analysis, while log2 fold changes and adjusted p-values came from NASA-processed differential-expression outputs.
-- Directional consistency does not necessarily imply statistical significance.
-- The selected eight-gene panel does not represent the complete transcriptome-wide maturation program.
-- Higher TH/DDC expression and lower progenitor-associated expression do not by themselves demonstrate functional neuronal maturation.
-- Bulk RNA-seq cannot determine whether the observed signal reflects within-cell maturation, changes in cell-type composition, or broader stress/cell-cycle effects.
-- Ground-versus-LEO differences should be described as LEO/spaceflight-associated. This analysis does not isolate microgravity from all other spaceflight exposures.
-
-The main unresolved question is:
-
-**Does the LEO-associated transcriptional maturation phenotype preserve the ventral-midbrain dopaminergic identity, cellular integrity and functional properties required for a biologically faithful Parkinson’s disease model?**
+- DESeq2 documentation  
+  https://bioconductor.org/packages/release/bioc/html/DESeq2.html
