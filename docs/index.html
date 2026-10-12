@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEO Dopaminergic Organoids | NASA OSD-871 Reproduction</title>
+<meta name="description" content="A reproducible R-based analysis of NASA OSD-871 testing LEO-associated transcriptional shifts in human iPSC-derived dopaminergic organoids.">
+<style>
+:root{--bg:#06111c;--card:#0d1b2a;--text:#eef6ff;--muted:#9cb1c8;--line:rgba(176,213,255,.16);--cyan:#6ee7ff;--blue:#5b8cff;--violet:#ad7cff;--amber:#ffbe6b;--shadow:0 20px 60px rgba(0,0,0,.28);--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(1000px 650px at 15% -10%,rgba(91,140,255,.18),transparent 60%),radial-gradient(900px 550px at 90% 0%,rgba(173,124,255,.12),transparent 62%),linear-gradient(180deg,var(--bg) 0%,#071420 44%,#06111c 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:rgba(6,17,28,.78);border-bottom:1px solid var(--line)}.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.brand-dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--violet));box-shadow:0 0 24px rgba(110,231,255,.8)}.nav-links{display:flex;gap:22px;font-size:14px;color:var(--muted)}.hero{position:relative;padding:92px 0 58px;min-height:710px;display:flex;align-items:center}.eyebrow{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid rgba(110,231,255,.22);background:rgba(110,231,255,.06);border-radius:999px;color:#bcefff;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px}h1{font-size:clamp(50px,8vw,92px);line-height:.96;margin:24px 0 22px;max-width:990px;letter-spacing:-4px}.gradient-text{background:linear-gradient(90deg,#fff 0%,#c5efff 35%,#98baff 65%,#d0b4ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:790px;color:#b7c7d8;font-size:19px;margin:0 0 30px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 18px;border-radius:14px;font-weight:800;font-size:14px;border:1px solid var(--line);transition:.2s transform,.2s border-color}.btn:hover{transform:translateY(-2px);border-color:rgba(110,231,255,.45)}.btn.primary{background:linear-gradient(135deg,#58cfff,#6e7bff);color:#03121d;border:none}.btn.ghost{background:rgba(255,255,255,.03)}.metrics{margin-top:58px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:980px}.metric{padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));box-shadow:var(--shadow)}.metric strong{font-size:34px;display:block;line-height:1.05}.metric span{font-size:13px;color:var(--muted);display:block;margin-top:8px}section{padding:86px 0}.section-kicker{color:var(--cyan);font-size:12px;letter-spacing:1.6px;text-transform:uppercase;font-weight:800}h2{font-size:clamp(34px,5vw,56px);letter-spacing:-2px;line-height:1.06;margin:10px 0 18px}.lead{font-size:18px;color:var(--muted);max-width:820px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:34px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}.card{border:1px solid var(--line);border-radius:24px;padding:28px;background:linear-gradient(180deg,rgba(16,36,58,.7),rgba(10,23,37,.78));box-shadow:var(--shadow)}.card h3{margin:0 0 10px;font-size:21px}.card p{margin:0;color:var(--muted)}.design-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}.flow{min-height:120px;border:1px solid var(--line);border-radius:18px;padding:20px;background:rgba(255,255,255,.025)}.flow small{color:var(--cyan);text-transform:uppercase;font-size:11px;letter-spacing:1px;font-weight:800}.flow strong{display:block;margin-top:8px;font-size:16px}.warning{margin-top:20px;padding:18px 20px;border-radius:16px;border:1px solid rgba(255,190,107,.3);background:rgba(255,190,107,.07);color:#ffd9a7}.figure-card{overflow:hidden;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow);margin-top:34px}.figure-card img{width:100%;cursor:zoom-in}.caption{background:#0b1a2a;color:var(--muted);padding:18px 20px;font-size:13px}.split-markers{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.marker-panel{padding:24px;border-radius:20px;border:1px solid var(--line)}.marker-panel.up{background:linear-gradient(135deg,rgba(255,111,125,.10),rgba(255,190,107,.05))}.marker-panel.down{background:linear-gradient(135deg,rgba(91,140,255,.12),rgba(110,231,255,.05))}.marker-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.pill{padding:7px 11px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:800}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}.stat{padding:20px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.025)}.stat b{font-size:25px;display:block}.stat small{color:var(--muted)}.fidelity{padding:44px;border:1px solid rgba(173,124,255,.22);border-radius:30px;background:radial-gradient(600px 280px at 0% 0%,rgba(91,140,255,.12),transparent 65%),radial-gradient(550px 300px at 100% 100%,rgba(173,124,255,.11),transparent 65%),rgba(255,255,255,.025);box-shadow:var(--shadow)}.big-eq{font-size:clamp(34px,6vw,74px);line-height:1.05;letter-spacing:-3px;font-weight:900;margin:18px 0}.neq{color:var(--amber)}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.gallery figure{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}.gallery img{aspect-ratio:4/3;object-fit:contain;cursor:zoom-in}.gallery figcaption{background:#0b1a2a;color:var(--muted);padding:12px;font-size:12px}pre{margin:24px 0 0;padding:22px;border-radius:18px;border:1px solid var(--line);background:#04101a;color:#bdf6cf;overflow:auto;font-size:14px}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}.stage{padding:26px;border:1px solid var(--line);border-radius:20px;position:relative;overflow:hidden}.stage:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}.stage:nth-child(2):before{background:var(--violet)}.stage:nth-child(3):before{background:var(--amber)}.stage small{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}.stage h3{margin:7px 0 8px}.source-list{display:grid;gap:10px;margin-top:24px}.source{border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:#bcd0e5;background:rgba(255,255,255,.02)}footer{padding:40px 0 54px;color:#8097af;border-top:1px solid var(--line);font-size:13px}.modal{position:fixed;inset:0;background:rgba(1,7,12,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:24px}.modal.open{display:flex}.modal img{max-width:min(1500px,95vw);max-height:90vh;border-radius:18px;background:#fff}.modal button{position:absolute;right:24px;top:20px;border:none;background:rgba(255,255,255,.1);color:white;width:44px;height:44px;border-radius:50%;font-size:24px;cursor:pointer}.reveal{opacity:0;transform:translateY(14px);transition:.55s ease}.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){.nav-links{display:none}.hero{padding-top:65px;min-height:auto}h1{letter-spacing:-2.5px}.metrics,.grid-3,.gallery,.timeline,.stat-grid{grid-template-columns:1fr 1fr}.grid-2,.design-flow{grid-template-columns:1fr}}
+@media(max-width:600px){.wrap{width:min(var(--max),calc(100% - 24px))}.metrics,.grid-3,.gallery,.timeline,.stat-grid,.split-markers{grid-template-columns:1fr}section{padding:66px 0}.fidelity{padding:28px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><span class="brand-dot"></span> OSD-871 Reproduction</a>
+    <div class="nav-links">
+      <a href="#question">Question</a><a href="#results">Results</a><a href="#fidelity">Interpretation</a><a href="#repro">Reproducibility</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">NASA OSD-871 · Reproducible RNA-seq Build</div>
+    <h1 class="gradient-text">LEO-associated transcription in human dopaminergic organoids.</h1>
+    <p>A reproducible R-based analysis testing whether published low-Earth-orbit marker shifts can be recovered — and where the evidence stops short of proving functional maturation.</p>
+    <div class="actions">
+      <a class="btn primary" href="#results">Explore the results →</a>
+      <a class="btn ghost" href="https://github.com/elenipatsiala/NASA-OSD871-Reproduction" target="_blank">View reproducible code ↗</a>
+      <a class="btn ghost" href="https://github.com/elenipatsiala/NASA-OSD871-Reproduction/blob/main/06_WRITEUP/technical_report.md" target="_blank">Technical report ↗</a>
+    </div>
+    <div class="metrics">
+      <div class="metric"><strong>23</strong><span>organoid RNA-seq samples</span></div>
+      <div class="metric"><strong>8</strong><span>predefined marker genes</span></div>
+      <div class="metric"><strong>4</strong><span>matched LEO–Ground contrasts</span></div>
+      <div class="metric"><strong>8/8</strong><span>directional matches across all contrasts</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="question">
+<div class="wrap reveal">
+  <div class="section-kicker">01 · The question</div>
+  <h2>Does “more mature” necessarily mean “more faithful”?</h2>
+  <p class="lead">The published study reported lower progenitor / cell-cycle-associated expression and higher maturation-associated expression in organoids cultured in low-Earth orbit. This Build asked a narrower question: can those selected marker directions be recovered from the public NASA processed data?</p>
+  <div class="grid-2">
+    <div class="card"><h3>What this Build tested</h3><p>Whether TH and DDC shift upward while VIM, SOX2, PAX6, CCND1, CDKN1A and GADD45A shift downward in LEO-associated comparisons.</p></div>
+    <div class="card"><h3>What this Build did not prove</h3><p>Functional neuronal maturation, improved Parkinson’s disease modelling, causality from microgravity alone, or a generalizable PD-specific response.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="wrap reveal">
+  <div class="section-kicker">02 · Experimental design</div>
+  <h2>Twenty-three samples, but only two donor-specific iPSC lines.</h2>
+  <p class="lead">The design audit changed how the results should be interpreted. Disease label, donor and cell line are fully confounded, so the defensible analysis is primarily within-cell-line Ground-versus-LEO reproduction.</p>
+  <div class="design-flow">
+    <div class="flow"><small>Source</small><strong>2 donor-specific iPSC lines</strong></div>
+    <div class="flow"><small>Culture</small><strong>± microglia</strong></div>
+    <div class="flow"><small>Exposure</small><strong>Ground vs LEO</strong></div>
+    <div class="flow"><small>Readout</small><strong>Bulk RNA-seq</strong></div>
+  </div>
+  <div class="warning"><strong>Design constraint:</strong> PD status = donor = cell line. The 23 samples are organoid-level replicates, not 23 independent human donors.</div>
+</div>
+</section>
+
+<section id="results">
+<div class="wrap reveal">
+  <div class="section-kicker">03 · Main result</div>
+  <h2>The marker-level direction reproduced across all four matched contrasts.</h2>
+  <p class="lead">The heatmap summarizes NASA-processed log2 fold changes. Asterisks indicate adjusted p &lt; 0.05. Directional consistency and statistical significance are deliberately shown as separate concepts.</p>
+  <div class="figure-card">
+    <img class="zoomable" alt="Statistical reproduction heatmap" src="https://raw.githubusercontent.com/elenipatsiala/NASA-OSD871-Reproduction/main/05_FIGURES/Figure4_Statistical_Reproduction_Heatmap.png">
+    <div class="caption">Figure 4 · Statistical reproduction heatmap. NASA-processed DGE outputs; * = adjusted p &lt; 0.05.</div>
+  </div>
+  <div class="split-markers">
+    <div class="marker-panel up"><h3>Higher in LEO</h3><p>Selected dopaminergic-associated markers</p><div class="marker-list"><span class="pill">TH ↑</span><span class="pill">DDC ↑</span></div></div>
+    <div class="marker-panel down"><h3>Lower in LEO</h3><p>Selected progenitor / cell-cycle-associated markers</p><div class="marker-list"><span class="pill">VIM ↓</span><span class="pill">SOX2 ↓</span><span class="pill">PAX6 ↓</span><span class="pill">CCND1 ↓</span><span class="pill">CDKN1A ↓</span><span class="pill">GADD45A ↓</span></div></div>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><b>3/4</b><small>DDC contrasts with adjusted p &lt; 0.05</small></div>
+    <div class="stat"><b>2/4</b><small>GADD45A contrasts with adjusted p &lt; 0.05</small></div>
+    <div class="stat"><b>4/4</b><small>TH contrasts with positive LEO-associated log2FC</small></div>
+    <div class="stat"><b>0/4</b><small>TH contrasts reaching adjusted p &lt; 0.05</small></div>
+  </div>
+</div>
+</section>
+
+<section id="fidelity">
+<div class="wrap reveal">
+  <div class="fidelity">
+    <div class="section-kicker">04 · Scientific interpretation</div>
+    <div class="big-eq">Maturation-associated transcription <span class="neq">≠</span> functional fidelity.</div>
+    <p class="lead">Higher TH/DDC and lower progenitor-associated expression can be compatible with a shift toward maturation, but bulk RNA-seq alone cannot establish mature electrophysiology, synaptic function, dopamine release, protein abundance, cell-type composition or preserved ventral-midbrain identity.</p>
+    <div class="grid-3">
+      <div class="card"><h3>Observed</h3><p>Consistent marker-level LEO-associated transcriptional shifts across four matched comparisons.</p></div>
+      <div class="card"><h3>Still unresolved</h3><p>Whether the signal reflects within-cell maturation, altered composition, or stress / cell-cycle state.</p></div>
+      <div class="card"><h3>Next scientific question</h3><p>Does the phenotype preserve dopaminergic identity, cellular integrity and function required for a faithful PD model?</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="wrap reveal">
+  <div class="section-kicker">05 · Sample-level views</div>
+  <h2>Expression patterns behind the scorecard.</h2>
+  <p class="lead">These plots use NASA-processed normalized expression values for descriptive visualization.</p>
+  <div class="gallery">
+    <figure><img class="zoomable" alt="TH Ground versus LEO expression plot" src="https://raw.githubusercontent.com/elenipatsiala/NASA-OSD871-Reproduction/main/05_FIGURES/Figure1_TH_Ground_vs_LEO.png"><figcaption>Figure 1 · TH expression</figcaption></figure>
+    <figure><img class="zoomable" alt="DDC Ground versus LEO expression plot" src="https://raw.githubusercontent.com/elenipatsiala/NASA-OSD871-Reproduction/main/05_FIGURES/Figure2_DDC_Ground_vs_LEO.png"><figcaption>Figure 2 · DDC expression</figcaption></figure>
+    <figure><img class="zoomable" alt="Progenitor and cell cycle marker panel" src="https://raw.githubusercontent.com/elenipatsiala/NASA-OSD871-Reproduction/main/05_FIGURES/Figure3_Progenitor_CellCycle_Markers_Ground_vs_LEO.png"><figcaption>Figure 3 · Progenitor / cell-cycle marker panel</figcaption></figure>
+  </div>
+</div>
+</section>
+
+<section id="repro">
+<div class="wrap reveal">
+  <div class="section-kicker">06 · Reproducibility</div>
+  <h2>The complete Build reruns from a fresh R session.</h2>
+  <p class="lead">Five clean scripts handle loading, metadata preparation, marker reproduction, NASA DGE validation and figure generation.</p>
+  <pre><code>source("run_all.R")
+
+1/5 Loading expression data...
+2/5 Preparing metadata...
+3/5 Reproducing marker patterns...
+4/5 Validating NASA DGE statistics...
+5/5 Creating final figures...
+
+BUILD PIPELINE COMPLETED SUCCESSFULLY</code></pre>
+  <div class="actions">
+    <a class="btn primary" href="https://github.com/elenipatsiala/NASA-OSD871-Reproduction" target="_blank">Open GitHub repository ↗</a>
+    <a class="btn ghost" href="https://github.com/elenipatsiala/NASA-OSD871-Reproduction/blob/main/04_RESULTS/Statistical_Reproduction_Scorecard.csv" target="_blank">View scorecard ↗</a>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="wrap reveal">
+  <div class="section-kicker">07 · Scientific integrity</div>
+  <h2>Claims stop where the data stop.</h2>
+  <div class="grid-3">
+    <div class="card"><h3>Processed-data provenance</h3><p>Normalized expression and differential-expression statistics came from NASA-processed outputs; this was not an independent raw-count DESeq2 analysis.</p></div>
+    <div class="card"><h3>Donor limitation</h3><p>One control line and one PD line prevent generalizable disease-specific inference.</p></div>
+    <div class="card"><h3>Spaceflight ≠ microgravity alone</h3><p>Ground-versus-LEO differences are described as spaceflight-associated rather than attributed automatically to one exposure.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="wrap reveal">
+  <div class="section-kicker">08 · Research trajectory</div>
+  <h2>From reproduction to a falsifiable maturation–integrity framework.</h2>
+  <div class="timeline">
+    <div class="stage"><small>Build</small><h3>Reproduce</h3><p>Recover the published marker-level direction with a transparent, rerunnable analysis.</p></div>
+    <div class="stage"><small>Iterate</small><h3>Stress-test</h3><p>Separate maturation, dopaminergic identity, progenitor/cell-cycle and stress/glial programs.</p></div>
+    <div class="stage"><small>Create</small><h3>µG-NeuroTune</h3><p>Explore whether “maturation” can be evaluated alongside dopaminergic integrity rather than treated as a single axis.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="wrap reveal">
+  <div class="section-kicker">Sources</div>
+  <h2>Data, study and reproducible project.</h2>
+  <div class="source-list">
+    <a class="source" href="https://osdr.nasa.gov/bio/repo/data/studies/OSD-871" target="_blank">NASA Open Science Data Repository · OSD-871 ↗</a>
+    <a class="source" href="https://pubmed.ncbi.nlm.nih.gov/39441987/" target="_blank">Marotta et al. (2024) · Effects of microgravity on human iPSC-derived neural organoids on the ISS ↗</a>
+    <a class="source" href="https://doi.org/10.1093/stcltm/szae070" target="_blank">Primary study DOI · 10.1093/stcltm/szae070 ↗</a>
+    <a class="source" href="https://github.com/elenipatsiala/NASA-OSD871-Reproduction" target="_blank">Full reproducible GitHub repository ↗</a>
+  </div>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap">Student research portfolio · Reproducible analysis of NASA OSD-871 processed RNA-seq data · Built with scientific claims deliberately constrained to the evidence.</div></footer>
+
+<div class="modal" id="modal"><button id="closeModal">×</button><img id="modalImg" alt=""></div>
+<script>
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const modal=document.getElementById('modal'),modalImg=document.getElementById('modalImg');
+document.querySelectorAll('.zoomable').forEach(img=>img.addEventListener('click',()=>{modalImg.src=img.src;modalImg.alt=img.alt;modal.classList.add('open')}));
+function closeModal(){modal.classList.remove('open');modalImg.src=''}
+document.getElementById('closeModal').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});window.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>
