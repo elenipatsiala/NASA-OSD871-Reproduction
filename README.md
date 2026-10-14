@@ -1,4 +1,9 @@
 # Reproducing LEO-Associated Transcriptional Shifts in Human Dopaminergic Organoids
+ **[View the interactive project website](https://elenipatsiala.github.io/NASA-OSD871-Reproduction/)**
+
+ **[View the reproducible R pipeline](https://github.com/elenipatsiala/NASA-OSD871-Reproduction)**
+
+ **[Read the technical report](06_WRITEUP/technical_report.md)**
 
 This project is a reproducible R-based analysis of NASA OSD-871, a public RNA-seq dataset of human iPSC-derived dopaminergic organoids cultured under Ground Control and low-Earth-orbit (LEO) spaceflight conditions.
 
